@@ -22,22 +22,22 @@
 
 Simon's Algorithm is a quantum algorithm that demonstrates an exponential speedup over classical algorithms for a specific problem. Given a black-box function $\( f: \{0,1\}^n \rightarrow \{0,1\}^n \)$ with the promise that:
 
-- \( f \) is **one-to-one** or **two-to-one**.
-- If \( f \) is two-to-one, there exists a non-zero secret string \( s \) such that for every pair \( x, y \), \( f(x) = f(y) \) **if and only if** \( y = x \oplus s \).
+- $\( f \)$ is **one-to-one** or **two-to-one**.
+- If $\( f \)$ is two-to-one, there exists a non-zero secret string $\( s \)$ such that for every pair $\( x, y \)$, $\( f(x) = f(y) \)$ **if and only if** $\( y = x \oplus s \)$.
 
 The goal is to determine the secret string \( s \).
 
-This project provides a comprehensive implementation of Simon's Algorithm using **Cirq**, Google's Python library for quantum circuits. The implementation is scalable for any number of qubits \( n \) and includes functionalities for:
+This project provides a comprehensive implementation of Simon's Algorithm using **Cirq**, Google's Python library for quantum circuits. The implementation is scalable for any number of qubits $\( n \)$ and includes functionalities for:
 
-- Dynamically generating the oracle based on a secret string \( s \).
+- Dynamically generating the oracle based on a secret string $\( s \)$.
 - Simulating the quantum circuit.
-- Extracting the secret string \( s \) from measurement results.
+- Extracting the secret string $\( s \)$ from measurement results.
 - Visualizing measurement outcomes.
 
 ## Features
 
-- **Dynamic Oracle Creation:** Automatically generates the oracle based on a randomly generated secret string \( s \).
-- **Scalability:** Handles any number of qubits \( n \) without significant modifications.
+- **Dynamic Oracle Creation:** Automatically generates the oracle based on a randomly generated secret string $\( s \)$.
+- **Scalability:** Handles any number of qubits $\( n \)$ without significant modifications.
 - **Visualization:** Provides histograms of measurement results to visualize the algorithm's behavior.
 - **Verification:** Includes functions to verify the correctness of the oracle and the extracted secret string.
 - **Comprehensive Documentation:** Step-by-step guide and explanations to facilitate understanding and troubleshooting.
@@ -146,10 +146,10 @@ SymPy version: X.X.X
 
    Execute each cell sequentially. The notebook includes:
 
-   - Functions to generate the secret string \( s \).
-   - Oracle creation based on \( s \).
+   - Functions to generate the secret string $\( s \)$.
+   - Oracle creation based on $\( s \)$.
    - Construction and simulation of the quantum circuit.
-   - Extraction of \( s \) from measurement results.
+   - Extraction of $\( s \)$ from measurement results.
    - Visualization of measurement outcomes.
 
 4. **View Results**
@@ -159,7 +159,7 @@ SymPy version: X.X.X
    - The quantum circuit diagram.
    - Simulation results.
    - A histogram of measurement results.
-   - The extracted secret string \( s \) with a verification message.
+   - The extracted secret string $\( s \)$ with a verification message.
 
 ## Project Structure
 
@@ -213,7 +213,7 @@ Here's a brief overview of how Simon's Algorithm works in this implementation:
 
    *Output:*
 
-   - A histogram displaying peaks for valid measurement outcomes that satisfy \( y \cdot s = 0 \).
+   - A histogram displaying peaks for valid measurement outcomes that satisfy $\( y \cdot s = 0 \)$.
 
 4. **Secret Extraction:**
 
@@ -248,7 +248,7 @@ If you encounter issues while running the notebook, consider the following steps
   - Insufficient number of measurement shots.
   - Misinterpretation of measurement results.
 - **Solutions:**
-  - **Verify Oracle:** Ensure that the CNOT gates are correctly applied based on \( s \).
+  - **Verify Oracle:** Ensure that the CNOT gates are correctly applied based on $\( s \)$.
   - **Increase Shots:** Increase the number of simulation runs (`shots`) to collect more data.
   - **Check Extraction Function:** Ensure that the extraction function correctly processes the measurement results.
 
