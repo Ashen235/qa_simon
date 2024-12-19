@@ -168,8 +168,7 @@ simons-algorithm/
 │   └── ibm.py             # Qiskit implementation
 ├── assets/                # Assets for the README
 │   └── SimonCircuitExample.jpeg # Example circuit image for README
-├── README.md               # Project documentation
-└── requirements.txt        # List of dependencies
+└── README.md               # Project documentation
 ```
 
 ## Troubleshooting
