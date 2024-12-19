@@ -20,7 +20,7 @@
 
 ## Introduction
 
-Simon's Algorithm is a quantum algorithm that demonstrates an exponential speedup over classical algorithms for a specific problem. Given a black-box function %\( f: \{0,1\}^n \rightarrow \{0,1\}^n \)% with the promise that:
+Simon's Algorithm is a quantum algorithm that demonstrates an exponential speedup over classical algorithms for a specific problem. Given a black-box function $\( f: \{0,1\}^n \rightarrow \{0,1\}^n \)$ with the promise that:
 
 - \( f \) is **one-to-one** or **two-to-one**.
 - If \( f \) is two-to-one, there exists a non-zero secret string \( s \) such that for every pair \( x, y \), \( f(x) = f(y) \) **if and only if** \( y = x \oplus s \).
