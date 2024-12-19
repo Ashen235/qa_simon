@@ -128,27 +128,27 @@ print("SymPy version:", sympy.__version__)
 Run the `google.py` implementation:
 
 ```bash
-python google.py
+python google.py --hidden_string 11011 --shots 1024 -n 5
 ```
 
-The program dynamically generates a secret string if not specified, constructs Simon's Algorithm circuit, and outputs the results.
+All the parameters are optional and can be used as wished. The defaults are n = 5, shots = 8192, and if hidden_string is not provided, a random one will be generated with length $\(n\)$.
 
 ### 2. **Qiskit Implementation**
 
 Run the `ibm.py` script:
 
 ```bash
-python ibm.py --hidden_string 11011 --shots 1024 --n 5
+python ibm.py --hidden_string 11011 --shots 1024
 ```
 
-All the parameters are optional and can be used as wished. The defaults are n = 5, shots = 8192, and if hidden_string is not provided, a random one will be generated.
+Replace `11011` with your desired hidden string and specify the number of shots.
 
 ### 3. **Amazon Braket Implementation**
 
 Run the `aws.py` script:
 
 ```bash
-python aws.py --hidden_string 11011 --shots 100
+python aws.py --hidden_string 11011 --shots 1024
 ```
 
 Replace `11011` with your desired hidden string and specify the number of shots.
