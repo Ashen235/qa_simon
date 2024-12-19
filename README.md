@@ -82,8 +82,8 @@ Follow these steps to set up the development environment for Simon's Algorithm.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/simons-algorithm.git
-cd simons-algorithm
+git clone https://github.com/Ashen235/qa_simon.git
+cd qa_simon
 ```
 
 ### 2. Create a Virtual Environment (Recommended)
