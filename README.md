@@ -202,7 +202,7 @@ Here's a brief overview of how Simon's Algorithm works in this implementation:
 
    *Output:*
 
-  - A figure displaying the qubits and the applied gates.
+   - A figure displaying the qubits and the applied gates.
 
 3. **Simulation and Measurement:**
 
