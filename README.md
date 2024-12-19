@@ -1,6 +1,6 @@
 # Simon's Algorithm Implementation in Cirq
 
-![Simon's Algorithm](https://i.imgur.com/ExampleHistogram.png)
+![Simon's Algorithm](SimonCircuitExample.jpeg)
 *Figure: Histogram of Measurement Results for Simon's Algorithm*
 
 ## Table of Contents
