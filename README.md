@@ -220,7 +220,7 @@ Here's a brief overview of how Simon's Algorithm works in this implementation:
    ```python
    counts = result.multi_measurement_histogram(keys=[f"m_{qubit}" for qubit in range(n)])
    counts_str = { ''.join(map(str, key)): value for key, value in counts.items() }
-   extracted_s = extract_secret_string_correct(counts_str, n=4, s=s)
+   extracted_s = extract_secret_string(counts_str, n=4, s=s)
    print(f"\nExtracted Secret String s: {''.join(map(str, extracted_s)) if extracted_s else 'None'}")
    ```
 
