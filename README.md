@@ -171,28 +171,6 @@ simons-algorithm/
 └── requirements.txt        # List of dependencies
 ```
 
-## Example
-
-Here's an example for Simon's Algorithm with :
-
-### Cirq Implementation
-
-```python
-python google.py
-```
-
-### Qiskit Implementation
-
-```bash
-python ibm.py --hidden_string 1011 --shots 512
-```
-
-### Amazon Braket Implementation
-
-```bash
-python aws.py --hidden_string 111 --shots 256
-```
-
 ## Troubleshooting
 
 If you encounter issues:
