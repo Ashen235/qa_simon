@@ -202,15 +202,7 @@ Here's a brief overview of how Simon's Algorithm works in this implementation:
 
    *Output:*
 
-   ```
-   Quantum Circuit:
-   0: ───H───@───────────M('m_0')───H───M('m_0')───
-                 │                       │
-   1: ───H───@───────────M('m_1')───H───M('m_1')───
-                 │                       │
-   2: ───H───CNOT───M('m_2')───H───M('m_2')───
-   3: ───H───────────M('m_3')───H───M('m_3')───
-   ```
+  - A figure displaying the qubits and the applied gates.
 
 3. **Simulation and Measurement:**
 
