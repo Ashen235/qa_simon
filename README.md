@@ -1,6 +1,7 @@
 # Simon's Algorithm Implementations
 
 ![Simon's Algorithm](assets/SimonCircuitExample.jpeg)
+
 *Figure: Histogram of Measurement Results for Simon's Algorithm*
 
 ## Table of Contents
