@@ -1,4 +1,4 @@
-# Simon's Algorithm Implementation in Cirq
+# Simon's Algorithm Implementation
 
 ![Simon's Algorithm](SimonCircuitExample.jpeg)
 
