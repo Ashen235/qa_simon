@@ -1,6 +1,6 @@
 # Simon's Algorithm Implementation
 
-![Simon's Algorithm](SimonCircuitExample.jpeg)
+![Simon's Algorithm](assets/SimonCircuitExample.jpeg)
 
 *Figure: Histogram of Measurement Results for Simon's Algorithm*
 
@@ -59,8 +59,8 @@ Follow these steps to set up the development environment for Simon's Algorithm i
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/simons-algorithm-cirq.git
-cd simons-algorithm-cirq
+git clone https://github.com/your-username/simons-algorithm.git
+cd simons-algorithm
 ```
 
 ### 2. Create a Virtual Environment (Recommended)
