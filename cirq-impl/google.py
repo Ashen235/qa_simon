@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sympy import Matrix
 import random
+import argparse
 
 def generate_secret_string(n):
     """
@@ -226,7 +227,7 @@ def plot_histogram_custom(result, n, title="Measurement Results"):
     plt.title(title)
     plt.show()
 
-def test_simon(n, shots=8192):
+def test_simon(n, shots=8192, s=None):
     """
     Tests Simon's Algorithm with n qubits.
 
@@ -234,8 +235,14 @@ def test_simon(n, shots=8192):
     - n: Number of input qubits.
     - shots: Number of simulation runs.
     """
-    s = generate_secret_string(n)
-    print(f"\nTesting Simon's Algorithm with n={n}, secret string s={''.join(map(str, s))}")
+    if s is None:
+        s = generate_secret_string(n)
+    else:
+        # Validate provided secret string
+        if len(s) != n or any(bit not in (0,1) for bit in s) or all(bit==0 for bit in s):
+            raise ValueError("Provided hidden_string must be of length n, contain only 0/1, and have at least one '1'.")
+    
+    print(f"\nTesting Simon's Algorithm with n={n}, secret string s={''.join(map(str, s))}, shots={shots}")
 
     # Create circuit
     circuit = simons_algorithm_circuit(n, s)
@@ -263,8 +270,22 @@ def test_simon(n, shots=8192):
         print("Mismatch! The extracted secret string does not match the original.")
 
 def main():
-    # Example Test
-    test_simon(n=5, shots=10)
+    parser = argparse.ArgumentParser(description="Run Simon's algorithm simulation.")
+    parser.add_argument("--n", type=int, default=5, help="Number of input qubits.")
+    parser.add_argument("--hidden_string", type=str, default=None, help="The secret bitstring (e.g., '101'). If not provided, a random one is generated.")
+    parser.add_argument("--shots", type=int, default=8192, help="Number of simulation shots.")
+    args = parser.parse_args()
+
+    n = args.n
+    shots = args.shots
+
+    # If a hidden string is provided, convert it to a list of ints
+    s = None
+    if args.hidden_string is not None:
+        s_str = args.hidden_string.strip()
+        s = [int(bit) for bit in s_str]
+
+    test_simon(n=n, shots=shots, s=s)
 
 if __name__ == "__main__":
     main()

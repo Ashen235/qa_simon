@@ -1,6 +1,4 @@
-# Simon's Algorithm Implementation
-
-![Simon's Algorithm](assets/SimonCircuitExample.jpeg)
+# Simon's Algorithm Implementations
 
 *Figure: Histogram of Measurement Results for Simon's Algorithm*
 
@@ -8,6 +6,7 @@
 
 - [Introduction](#introduction)
 - [Features](#features)
+- [Implementations](#implementations)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -20,41 +19,64 @@
 
 ## Introduction
 
-Simon's Algorithm is a quantum algorithm that demonstrates an exponential speedup over classical algorithms for a specific problem. Given a black-box function $\( f: \{0,1\}^n \rightarrow \{0,1\}^n \)$ with the promise that:
+Simon's Algorithm demonstrates exponential speedup over classical algorithms for identifying a hidden binary string in a black-box function . This repository includes multiple implementations of Simon's Algorithm using:
 
-- $\( f \)$ is **one-to-one** or **two-to-one**.
-- If $\( f \)$ is two-to-one, there exists a non-zero secret string $\( s \)$ such that for every pair $\( x, y \)$, $\( f(x) = f(y) \)$ **if and only if** $\( y = x \oplus s \)$.
+- **Cirq**
+- **Qiskit**
+- **Amazon Braket**
 
-The goal is to determine the secret string \( s \).
-
-This project provides a comprehensive implementation of Simon's Algorithm using **Cirq**, Google's Python library for quantum circuits. The implementation is scalable for any number of qubits $\( n \)$ and includes functionalities for:
-
-- Dynamically generating the oracle based on a secret string $\( s \)$.
-- Simulating the quantum circuit.
-- Extracting the secret string $\( s \)$ from measurement results.
-- Visualizing measurement outcomes.
+Each implementation showcases unique features, enabling developers to explore Simon's Algorithm across different quantum platforms.
 
 ## Features
 
-- **Dynamic Oracle Creation:** Automatically generates the oracle based on a randomly generated secret string $\( s \)$.
-- **Scalability:** Handles any number of qubits $\( n \)$ without significant modifications.
-- **Visualization:** Provides histograms of measurement results to visualize the algorithm's behavior.
-- **Verification:** Includes functions to verify the correctness of the oracle and the extracted secret string.
-- **Comprehensive Documentation:** Step-by-step guide and explanations to facilitate understanding and troubleshooting.
+- **Multi-platform Implementations**:
+  - Cirq-based simulation for constructing and running Simon's Algorithm locally.
+  - Qiskit-based implementation for creating quantum circuits and running them using Qiskit's simulators.
+  - Amazon Braket-based implementation for executing Simon's Algorithm on cloud quantum simulators.
+- **Dynamic Oracle Generation**:
+  - Automatically creates oracles based on the hidden binary string .
+- **Scalability**:
+  - Supports custom qubit counts.
+- **Visualization**:
+  - Includes histograms and circuit visualizations for result analysis.
+- **Utility Functions**:
+  - Shared utility functions to streamline oracle creation and simulation.
+
+## Implementations
+
+1. **Cirq Implementation**
+
+   - Cirq implementation to simulate Simon's Algorithm locally using Cirq's tools.
+   - Dynamically generated quantum circuits for Simon's Algorithm.
+
+2. **Qiskit Implementation**
+
+   - Quantum circuits implemented with Qiskit.
+   - Qiskit implementation to simulate quantum circuits using AerSimulator.
+
+3. **Amazon Braket Implementation**
+
+   - Uses Amazon Braket's `LocalSimulator` for circuit execution.
+   - Simon's oracle subroutine is registered for modular use.
+
+4. **Shared Utilities**
+
+   - `simons_utils.py` contains reusable components like the oracle subroutine for Braket.
 
 ## Prerequisites
 
-Before setting up the project, ensure that you have the following installed on your system:
+Before setting up the project, ensure you have the following installed:
 
-- **Python 3.7 or later:** [Download Python](https://www.python.org/downloads/)
-- **Cirq:** Google's Python library for quantum circuits.
-- **Matplotlib:** Library for creating static, animated, and interactive visualizations.
-- **SymPy:** Python library for symbolic mathematics.
-- **Jupyter Notebook:** Web-based interactive computing platform.
+- **Python 3.7 or later**: [Download Python](https://www.python.org/downloads/)
+- **Cirq**: Quantum simulation library.
+- **Qiskit**: Quantum Information Toolkit.
+- **Amazon Braket SDK**: For quantum circuit simulation and execution.
+- **Matplotlib**: For result visualization.
+- **SymPy**: For symbolic mathematics.
 
 ## Installation
 
-Follow these steps to set up the development environment for Simon's Algorithm in Cirq.
+Follow these steps to set up the development environment for Simon's Algorithm.
 
 ### 1. Clone the Repository
 
@@ -65,46 +87,25 @@ cd simons-algorithm
 
 ### 2. Create a Virtual Environment (Recommended)
 
-Creating a virtual environment helps manage dependencies and avoid conflicts.
-
 ```bash
-# Create a virtual environment named 'env'
 python -m venv env
 
 # Activate the virtual environment
-
 # On Windows:
 env\Scripts\activate
-
 # On Unix/Linux/macOS:
 source env/bin/activate
 ```
 
-### 3. Upgrade pip
-
-Ensure that `pip` is up to date.
-
-```bash
-pip install --upgrade pip
-```
-
-### 4. Install Required Packages
+### 3. Install Required Packages
 
 Install all necessary Python packages using `pip`.
 
 ```bash
-pip install cirq matplotlib sympy
+pip install cirq matplotlib sympy qiskit amazon-braket-sdk
 ```
 
-### 5. Install Jupyter Notebook
-
-If you don't have Jupyter Notebook installed, install it using `pip`.
-
-```bash
-pip install notebook
-```
-
-### 6. Verify Installation
+### 4. Verify Installation
 
 Run the following Python commands to ensure everything is installed correctly.
 
@@ -112,194 +113,126 @@ Run the following Python commands to ensure everything is installed correctly.
 import cirq
 import matplotlib
 import sympy
+from qiskit import Aer
+from braket.circuits import Circuit
 
 print("Cirq version:", cirq.__version__)
 print("Matplotlib version:", matplotlib.__version__)
 print("SymPy version:", sympy.__version__)
 ```
 
-**Expected Output:**
-
-```
-Cirq version: X.X.X
-Matplotlib version: X.X.X
-SymPy version: X.X.X
-```
-
-*Note: Replace `X.X.X` with the actual version numbers.*
-
 ## Usage
 
-1. **Launch Jupyter Notebook**
+### 1. **Cirq Implementation**
 
-   Navigate to the project directory and launch Jupyter Notebook.
+Run the `google.py` implementation:
 
-   ```bash
-   jupyter notebook
-   ```
+```bash
+python google.py
+```
 
-2. **Open the Notebook**
+The program dynamically generates a secret string if not specified, constructs Simon's Algorithm circuit, and outputs the results.
 
-   Open the `simons_algorithm_cirq.ipynb` notebook from the Jupyter interface.
+### 2. **Qiskit Implementation**
 
-3. **Run the Notebook Cells**
+Run the `ibm.py` script:
 
-   Execute each cell sequentially. The notebook includes:
+```bash
+python ibm.py --hidden_string 11011 --shots 1024 --n 5
+```
 
-   - Functions to generate the secret string $\( s \)$.
-   - Oracle creation based on $\( s \)$.
-   - Construction and simulation of the quantum circuit.
-   - Extraction of $\( s \)$ from measurement results.
-   - Visualization of measurement outcomes.
+All the parameters are optional and can be used as wished. The defaults are n = 5, shots = 8192, and if hidden_string is not provided, a random one will be generated.
 
-4. **View Results**
+### 3. **Amazon Braket Implementation**
 
-   After running all cells, you should see:
+Run the `aws.py` script:
 
-   - The quantum circuit diagram.
-   - Simulation results.
-   - A histogram of measurement results.
-   - The extracted secret string $\( s \)$ with a verification message.
+```bash
+python aws.py --hidden_string 11011 --shots 100
+```
+
+Replace `11011` with your desired hidden string and specify the number of shots.
 
 ## Project Structure
 
 ```
-simons-algorithm-cirq/
-├── simons_algorithm_cirq.ipynb
-├── README.md
-├── requirements.txt
-└── LICENSE
+simons-algorithm/
+├── cirq-impl/             # Cirq-based implementation
+│   ├── google.py          # Cirq implementation
+│   ├── google.ipynb       # Jupyter Notebook for Cirq
+├── braket-impl/           # Amazon Braket-based implementation
+│   ├── aws.py             # Amazon Braket implementation
+│   └── simons_utils.py    # Shared utilities for Braket
+├── qiskit-impl/           # Qiskit-based implementation
+│   └── ibm.py             # Qiskit implementation
+├── assets/                # Assets for the README
+│   └── SimonCircuitExample.jpeg # Example circuit image for README
+├── README.md               # Project documentation
+└── requirements.txt        # List of dependencies
 ```
-
-- **simons_algorithm_cirq.ipynb:** Jupyter Notebook containing the implementation of Simon's Algorithm.
-- **README.md:** This documentation file.
-- **requirements.txt:** (Optional) List of Python packages required.
-- **LICENSE:** (Optional) Licensing information.
 
 ## Example
 
-Here's a brief overview of how Simon's Algorithm works in this implementation:
+Here's an example for Simon's Algorithm with :
 
-1. **Secret String Generation:**
+### Cirq Implementation
 
-   ```python
-   s = generate_secret_string(n=4)
-   print(f"Secret string s: {''.join(map(str, s))}")
-   ```
+```python
+python google.py
+```
 
-   *Output:*
+### Qiskit Implementation
 
-   ```
-   Secret string s: 1010
-   ```
+```bash
+python ibm.py --hidden_string 1011 --shots 512
+```
 
-2. **Quantum Circuit Construction:**
+### Amazon Braket Implementation
 
-   ```python
-   circuit = simons_algorithm_circuit(n=4, s=s)
-   display_circuit(circuit)
-   ```
-
-   *Output:*
-
-   - A figure displaying the qubits and the applied gates.
-
-3. **Simulation and Measurement:**
-
-   ```python
-   result = run_simulation(circuit, repetitions=8192)
-   plot_histogram_custom(result, n=4, title="Simon's Algorithm Measurement Results")
-   ```
-
-   *Output:*
-
-   - A histogram displaying peaks for valid measurement outcomes that satisfy $\( y \cdot s = 0 \)$.
-
-4. **Secret Extraction:**
-
-   ```python
-   counts = result.multi_measurement_histogram(keys=[f"m_{qubit}" for qubit in range(n)])
-   counts_str = { ''.join(map(str, key)): value for key, value in counts.items() }
-   extracted_s = extract_secret_string(counts_str, n=4, s=s)
-   print(f"\nExtracted Secret String s: {''.join(map(str, extracted_s)) if extracted_s else 'None'}")
-   ```
-
-   *Output:*
-
-   ```
-   Extracted Secret String s: 1010
-   Success! The extracted secret string matches the original.
-   ```
+```bash
+python aws.py --hidden_string 111 --shots 256
+```
 
 ## Troubleshooting
 
-If you encounter issues while running the notebook, consider the following steps:
+If you encounter issues:
 
-### 1. **No Output or Empty Cells**
+1. **Circular Import Errors**:
 
-- **Issue:** Cells are not producing any output.
-- **Solution:** Ensure that you have executed all preceding cells in order. Restart the kernel and run all cells again.
+   - Ensure your file names don’t conflict with library names (e.g., `cirq.py`, `qiskit.py`).
+   - Rename conflicting files and clear `__pycache__`.
 
-### 2. **Incorrect Secret Extraction**
+2. **Incorrect Secret Extraction**:
 
-- **Issue:** The extracted secret string \( s \) does not match the original.
-- **Possible Causes:**
-  - Incorrect oracle implementation.
-  - Insufficient number of measurement shots.
-  - Misinterpretation of measurement results.
-- **Solutions:**
-  - **Verify Oracle:** Ensure that the CNOT gates are correctly applied based on $\( s \)$.
-  - **Increase Shots:** Increase the number of simulation runs (`shots`) to collect more data.
-  - **Check Extraction Function:** Ensure that the extraction function correctly processes the measurement results.
+   - Verify the oracle implementation.
+   - Increase the number of shots.
 
-### 3. **Error Messages Related to Cirq or Other Libraries**
+3. **Dependencies Not Found**:
 
-- **Issue:** Errors during import or execution related to `cirq`, `matplotlib`, or `sympy`.
-- **Solution:** Ensure all required packages are installed and up to date. You can reinstall them using `pip`:
-
-  ```bash
-  pip install --upgrade cirq matplotlib sympy
-  ```
-
-### 4. **Incorrect Histogram Display**
-
-- **Issue:** The histogram does not display expected peaks.
-- **Possible Causes:**
-  - Oracle does not correctly implement \( f(x) = f(x \oplus s) \).
-  - Measurement keys do not correspond to the correct qubits.
-- **Solutions:**
-  - **Double-Check Oracle:** Review the oracle creation function to ensure correctness.
-  - **Verify Measurement Keys:** Ensure that only input qubits are being measured for extracting \( s \).
-
-### 5. **Visualization Issues**
-
-- **Issue:** Histogram or circuit diagrams do not render correctly.
-- **Solutions:**
-  - Ensure that `matplotlib` is properly installed.
-  - In Jupyter Notebook, use `%matplotlib inline` at the beginning to enable inline plotting.
-
-    ```python
-    %matplotlib inline
-    ```
+   - Ensure all required libraries are installed. Reinstall missing dependencies:
+     ```bash
+     pip install -r requirements.txt
+     ```
 
 ## Contributing
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
+Contributions are welcome! Open an issue or submit a pull request if you have suggestions or fixes.
 
 1. **Fork the Repository**
-2. **Create a Feature Branch**
+
+2. **Create a Feature Branch**:
 
    ```bash
    git checkout -b feature/YourFeature
    ```
 
-3. **Commit Your Changes**
+3. **Commit Changes**:
 
    ```bash
    git commit -m "Add Your Feature"
    ```
 
-4. **Push to the Branch**
+4. **Push to the Branch**:
 
    ```bash
    git push origin feature/YourFeature
@@ -314,9 +247,6 @@ This project is licensed under the [MIT License](LICENSE).
 ## Acknowledgements
 
 - [Cirq Documentation](https://quantumai.google/cirq)
-- [SymPy Documentation](https://docs.sympy.org/)
-- [Matplotlib Documentation](https://matplotlib.org/stable/contents.html)
-- Inspired by quantum computing research and educational resources.
+- [Qiskit Documentation](https://qiskit.org/documentation/)
+- [Amazon Braket Documentation](https://docs.aws.amazon.com/braket/index.html)
 
----
-```
